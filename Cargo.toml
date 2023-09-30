@@ -12,14 +12,16 @@ repository = "https://github.com/imbolc/tower-cookies"
 version = "0.9.0"
 
 [features]
-default = ["axum-core"]
+default = ["axum-core", "time"]
 signed = ["cookie/signed"]
 private = ["cookie/secure"]
+time = ["cookie/time"]
+chrono = ["cookie/chrono"]
 
 [dependencies]
 async-trait = "0.1"
 axum-core = { version = "0.3", optional = true }
-cookie = { version = "0.17", features = ["percent-encode"] }
+cookie = { git = "https://github.com/bm-w/cookie-rs.git", tag = "0.17.0-chrono", default-features = false, features = ["percent-encode"] }
 futures-util = "0.3"
 http = "0.2"
 parking_lot = "0.12"
